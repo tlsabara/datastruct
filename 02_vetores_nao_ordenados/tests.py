@@ -73,3 +73,20 @@ def test_vector_shold_be_sliceble() -> None:
     assert len(instace[0:2]) == 2
     assert len(instace[1:]) == 2
     assert len(instace[:-2]) == 1
+
+def test_vector_shold_be_exclude_a_value() -> None:
+    """A classe deve permitir a remoção de um item, sem deixar posições vazlias"""
+
+    instace = UnordenetVector(7)
+
+    instace.insert(10)
+    instace.insert(20)
+    instace.insert(30)
+    instace.insert(40)
+    instace.insert(50)
+
+    instace.exclude(20)
+
+    assert len(instace) == 4
+    assert instace[1] == 30
+

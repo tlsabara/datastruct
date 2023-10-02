@@ -48,3 +48,14 @@ class UnordenetVector:
             if value == self[i]:
                 return i
         return -1
+
+    def exclude(self, value) -> int:
+        """Função para remover um item do vetor, caso não seja localizado o item, retorna -1
+        """
+        if position := self.linear_search(value) == -1:
+            return position
+        else:
+            for i in range(position, self.last_pos):
+                self.values[i] = self.values[i + 1]
+            self.last_pos -= 1
+            return self.last_pos
