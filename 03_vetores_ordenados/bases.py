@@ -1,5 +1,5 @@
+from __future__ import annotations
 import numpy as np
-
 class OrdenedVector:
     def __init__(self, size: int) -> None:
         """Esta classe representa um vetor ordenado de tamanho prefixado.
@@ -30,27 +30,33 @@ class OrdenedVector:
 
             return "".join(temp)
 
-    def insert(self, value) -> None:
-        if -1 < self.last_pos < self.size:
+    def insert(self, value) -> OrdenedVector:
+        """Realiza o insert de forma ordeada, permite duplicatas.
+        """
+
+        if self.last_pos < self.size:
+            self.last_pos += 1
             pos = 0
             for i in range(self.last_pos + 1):
                 pos = i
                 if self.values[i] > value: break
-            self.values[pos+1 : self.last_pos + 1] = self.values[pos : self.last_pos]
+            self.values[pos+1 : self.last_pos+1] = self.values[pos : self.last_pos]
             self.values[pos] = value
-            self.last_pos += 1
-        elif self.last_pos == -1:
-            self.values[0] = value
-            self.last_pos = 0
         else:
             raise IndexError("O limite do vetor foi aringido")
+        return self
 
 if __name__ == '__main__':
-    v = OrdenedVector(5)
-    v.insert(2)
-    print(v.show_values())
+    v = OrdenedVector(10)
 
-    v.insert(5)
-    print(v.show_values())
-    v.insert(55)
+    # Teste de inserção
+    v.insert(4) \
+        .insert(1) \
+        .insert(1) \
+        .insert(55) \
+        .insert(3) \
+        .insert(32) \
+        .insert(23) \
+        .insert(2) \
+        .insert(100)
     print(v.show_values())
