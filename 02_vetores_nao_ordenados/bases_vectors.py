@@ -59,3 +59,18 @@ class UnordenetVector:
                 self.values[i] = self.values[i + 1]
             self.last_pos -= 1
             return self.last_pos
+
+
+if __name__ == '__main__':
+    v = UnordenetVector(5)
+    v.insert(2)
+    v.insert(44)
+    v.insert(11)
+    v.insert(3)
+
+    v.linear_search(55)
+
+    v.exclude(11)
+    v.exclude(5234)
+
+    v.insert(123)
