@@ -1,6 +1,6 @@
 import numpy as np
 
-class UnordenetVector:
+class UnordenedVector:
     def __init__(self, size: int) -> None:
         """Esta classe representa um vetor não ordenado de tamanho prefixado.
 
@@ -62,7 +62,7 @@ class UnordenetVector:
 
 
 if __name__ == '__main__':
-    v = UnordenetVector(5)
+    v = UnordenedVector(5)
     v.insert(2)
     v.insert(44)
     v.insert(11)
