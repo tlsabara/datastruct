@@ -66,7 +66,7 @@ if __name__ == '__main__':
         .insert(100)
     print(v.show_values())
 
-    3
+
     v = OrdenedVector(10, uniques=True)
 
     # Teste de inserção
