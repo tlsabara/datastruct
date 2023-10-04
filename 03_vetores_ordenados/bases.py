@@ -51,6 +51,18 @@ class OrdenedVector:
             raise IndexError("O limite do vetor foi aringido")
         return self
 
+    def linear_search(self, value: int) -> int:
+        """A pesquisa linear em um vetor ordenado tem vantagem pois pode avaliar o valor
+        da posição para determinar se o vetor contém o valor procurado.
+        """
+        for i in range(self.last_pos +1):
+            if self.values[i] > value:
+                return -1
+            if self.values[i] == value:
+                return i
+
+
+
 if __name__ == '__main__':
     v = OrdenedVector(10)
 
@@ -80,3 +92,6 @@ if __name__ == '__main__':
         .insert(2) \
         .insert(100)
     print(v.show_values())
+
+    print(v.linear_search(4))
+    print(v.linear_search(22))

@@ -39,7 +39,7 @@ class UnordenedVector:
         else:
             raise IndexError("O limite do vetor foi atingido.")
 
-    def linear_search(self, value) -> int:
+    def linear_search(self, value: int) -> int:
         """Realiza a varredura do vetor em busca do valor passado.
 
         Retona a posição do item, ou -1 para valores não localizados
