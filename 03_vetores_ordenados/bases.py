@@ -62,6 +62,34 @@ class OrdenedVector:
                 return i
 
 
+    def exclude(self, value: int) -> OrdenedVector:
+        """A exclusão segue o padrão de anterior, mas aqui optei por utilizar uma forma mais pythonic
+        """
+        position = self.linear_search(value)
+        if position == -1:
+            return self
+        self.values[position : self.last_pos] = self.values[position+1 : self.last_pos+1]
+        self.last_pos -= 1
+        return self
+
+    def binary_search(self, value: int, l_down: int = None, l_up: int = None) -> int:
+        l_down = l_down if l_down else 0
+        l_up = l_up if l_up else self.last_pos
+
+        actual_pos = int((l_up + l_down) / 2)
+
+        if value == self.values[actual_pos]:
+            return actual_pos
+
+        if l_down >= l_up:
+            return -1
+
+        if value > self.values[actual_pos]:
+            return self.binary_search(value, l_down=actual_pos+1, l_up=l_up)
+        elif value < self.values[actual_pos]:
+            return self.binary_search(value, l_down=l_down, l_up=actual_pos-1)
+        else:
+            return -1
 
 if __name__ == '__main__':
     v = OrdenedVector(10)
@@ -95,3 +123,14 @@ if __name__ == '__main__':
 
     print(v.linear_search(4))
     print(v.linear_search(22))
+
+
+    v.exclude(4)
+    print(v.show_values())
+
+    print(v.binary_search(23))
+    print(v.binary_search(4))
+    print(v.binary_search(3))
+    print(v.binary_search(13))
+    print(v.binary_search(100))
+    print(v.binary_search(22))
