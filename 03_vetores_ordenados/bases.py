@@ -73,6 +73,8 @@ class OrdenedVector:
         return self
 
     def binary_search(self, value: int, l_down: int = None, l_up: int = None) -> int:
+        """Método de procura que agiliza a procura no vetor ordenado.
+        """
         l_down = l_down if l_down else 0
         l_up = l_up if l_up else self.last_pos
 
