@@ -42,6 +42,7 @@ class OrdenedVector:
             for i in range(self.last_pos + 1):
                 pos = i
                 if self.values[i] == value and self.uniques:
+                    print(f"O valor {value} ja existe no vetor")
                     self.last_pos -= 1
                     return self
                 if self.values[i] > value: break
